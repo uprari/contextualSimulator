@@ -50,6 +50,12 @@ func Categorise(c *gin.Context){
 		sendFailure(c,"Invalid page url")
 		return
 	}
+
+	if len(glb.GumGum_data) == 0 ||len(glb.Peer39_data) == 0 {
+
+		sendFailure(c,"Path Failure ")
+		return
+	}
 	switch(service_source){
 		case "1":
 			modulus = uint32(len(glb.GumGum_data))
