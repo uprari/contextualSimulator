@@ -4,6 +4,8 @@ import (
   "github.com/gin-gonic/gin"
   "github.com/uprari/contextualSimulator/controllers"
   "github.com/uprari/contextualSimulator/globalData"
+  "os"
+  "fmt"
 )
 
 var (
@@ -19,11 +21,23 @@ func StartApplication(){
 
     glb.Init_response_data()
     controllers.InitController()
+
+    addr, err := determineListenAddress()
+ 	if err != nil {
+    	fmt.Println(err)
+  	}
+	
     router.LoadHTMLFiles("../html/landing_page.html")	
 	mapUrls()
-	router.Run(":9434")
+	router.Run(addr)
 
 }
 
 
-
+func determineListenAddress() (string, error) {
+  port := os.Getenv("PORT")
+  if port == "" {
+    return "", fmt.Errorf("$PORT not set")
+  }
+  return ":" + port, nil
+}
