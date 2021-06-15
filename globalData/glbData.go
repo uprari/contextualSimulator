@@ -15,7 +15,7 @@ var(
 func Init_response_data () {
 
 
-	jsonFile,_ := os.Open("/simResponse/peer39.json")
+	jsonFile,_ := os.Open("simResponse/peer39.json")
 
     defer jsonFile.Close()
 
@@ -26,7 +26,7 @@ func Init_response_data () {
 
 	jsonFile.Close()
 
-	jsonFile,_ = os.Open("/simResponse/gumgum.json")
+	jsonFile,_ = os.Open("simResponse/gumgum.json")
 	scanner = bufio.NewScanner(jsonFile)
 
 	for scanner.Scan(){

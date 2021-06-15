@@ -28,7 +28,7 @@ func StartApplication(){
     	fmt.Println(err)
   	}
 	
-    router.LoadHTMLFiles("/html/landing_page.html")	
+    router.LoadHTMLFiles("html/landing_page.html")	
 	mapUrls()
 	router.Run(addr)
 
