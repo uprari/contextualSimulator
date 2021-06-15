@@ -21,13 +21,14 @@ func StartApplication(){
 
     glb.Init_response_data()
     controllers.InitController()
-
+    path, err := os.Getwd()
+	fmt.Println(path)	
     addr, err := determineListenAddress()
  	if err != nil {
     	fmt.Println(err)
   	}
 	
-    router.LoadHTMLFiles("../html/landing_page.html")	
+    router.LoadHTMLFiles("github.com/uprari/contextualSimulator/html/landing_page.html")	
 	mapUrls()
 	router.Run(addr)
 
