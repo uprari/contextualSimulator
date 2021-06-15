@@ -17,7 +17,6 @@ var (
 
 func StartApplication(){
 
-
     glb.Init_response_data()
     controllers.InitController()
     router.LoadHTMLFiles("../html/landing_page.html")	

@@ -55,9 +55,9 @@ func Categorise(c *gin.Context){
 			modulus = uint32(len(glb.GumGum_data))
     		index = crc32.Checksum([]byte(page_url),table)%modulus	
 			data = []byte(glb.GumGum_data[index])
-			fmt.Println(string(data)) 
     		var v map[string]interface{}
     		json.Unmarshal(data, &v)
+			v["pageUrl"] = page_url; 
 			c.JSON(http.StatusOK,v)
 		case "2":
 			modulus = uint32(len(glb.Peer39_data))
@@ -75,7 +75,6 @@ func Categorise(c *gin.Context){
 
 
 func sendFailure(c *gin.Context, msg string){
-
 
 	c.String(http.StatusNotFound, msg)
 

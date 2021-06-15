@@ -3,7 +3,6 @@ package glb
 import(
 		"bufio"
         "os"
-  		"fmt"
 )
 
 var(
@@ -33,6 +32,5 @@ func Init_response_data () {
 	for scanner.Scan(){
 		GumGum_data = append(GumGum_data, scanner.Text())
     }
-	fmt.Println(GumGum_data)
 
 }
