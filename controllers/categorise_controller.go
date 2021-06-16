@@ -69,8 +69,8 @@ func Categorise(c *gin.Context){
 			modulus = uint32(len(glb.Peer39_data))
     		index = crc32.Checksum([]byte(page_url),table)%modulus	
 			data  = []byte(glb.Peer39_data[index])
-    		var v []map[string]interface{}
-    		json.Unmarshal(data, &v)
+    		var v map[string]interface{}
+    	    json.Unmarshal(data, &v)
 			c.JSON(http.StatusOK,v)
 		default :
 			sendFailure(c,"Data deficient; conversion failure")
