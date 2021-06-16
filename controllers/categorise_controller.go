@@ -41,7 +41,7 @@ func Categorise(c *gin.Context){
 	var data []byte
     var modulus uint32
     var index uint32
-    service_source := c.Query("ctg")
+    service_source := c.Query("service")
 	page_url := c.Query("s")
 
 	_ ,err := url.ParseRequestURI( page_url )
@@ -57,7 +57,7 @@ func Categorise(c *gin.Context){
 		return
 	}
 	switch(service_source){
-		case "1":
+		case "gumgum":
 			modulus = uint32(len(glb.GumGum_data))
     		index = crc32.Checksum([]byte(page_url),table)%modulus	
 			data = []byte(glb.GumGum_data[index])
@@ -65,7 +65,7 @@ func Categorise(c *gin.Context){
     		json.Unmarshal(data, &v)
 			v["pageUrl"] = page_url; 
 			c.JSON(http.StatusOK,v)
-		case "2":
+		case "peer39":
 			modulus = uint32(len(glb.Peer39_data))
     		index = crc32.Checksum([]byte(page_url),table)%modulus	
 			data  = []byte(glb.Peer39_data[index])
